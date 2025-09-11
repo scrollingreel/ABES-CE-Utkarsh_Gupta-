@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #adi{
+            border: 5px solid red;
+            height: 300px;
+            width: 300px;
+            background-color: chocolate;
+        }
+    </style>
 </head>
 <body>
+    <div id="adi">
+        <button onclick="hello()">Click</button>
+        <p id="aaa"></p>
+    </div>
     <script>
-        function abes(){
-            document.write("<h1>hi we are students of abes engineering college</h1>");
+   //     function abes(){
+   //         document.write("<h1>hi we are students of abes engineering college</h1>");
+     //   }
+       // abes();
+    //    function add( a, b){
+//
+  //          document.write("The addition of a+b :"+a+b+"<br>");
+    //    }
+      //  function sub( a , b){
+        //    document.write("The subtraction of a-b "+(a-b)+"<br>");
+        //};
+       // add(5,4);
+        //sub(5,4);
+        function hello(){
+            document.getElementById("aaa").innerHTML="<h1>Hello World</h1>";
         }
-        abes();
-        function add( a, b){
 
-            document.write("The addition of a+b :"+a+b+"<br>");
-        }
-        function sub( a , b){
-            document.write("The subtraction of a-b "+(a-b)+"<br>");
-        };
-        add(5,4);
-        sub(5,4);
     </script>
 </body>
 </html>
