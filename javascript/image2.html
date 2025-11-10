@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Changer</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+    .image-box {
+      width: 300px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #333;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-box">
+    <img id="displayedImage" src="https://my.alfred.edu/zoom/_images/foster-lake.jpg" alt="Image">
+  </div>
+
+  <button onclick="changeImage()">Change</button>
+
+  <script>
+   
+    const images = [
+      "https://cdn.pixabay.com/photo/2022/09/27/19/46/ai-generated-7483596_960_720.jpg",
+      "https://img.freepik.com/premium-photo/painting-mountain-landscape-with-river_850197-1214.jpg",
+      "https://img.freepik.com/premium-photo/mountain-landscape-with-river-running-through-it_956709-101.jpg"
+    ];
+
+    let index = 0;
+
+    function changeImage() {
+      index = (index + 1) % images.length; 
+      document.getElementById("displayedImage").src = images[index];
+    }
+  </script>
+
+</body>
+</html>

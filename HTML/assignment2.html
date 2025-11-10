@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking System</title>
+</head>
+<style>
+    #card{
+        width: 800px;
+        height: 500px;
+        border: 2px solid black;
+        margin: auto;
+        margin-top: 50px;
+        box-shadow: 5px 10px 18px #888888;
+    }
+    nav{
+        background-color: red;
+        padding: 10px;
+       display: flex;
+       gap: 250px;
+         align-items: center;
+         color: white;
+         height: 60px;
+    }
+    h1{
+        font-size: 25px;
+        text-align: center;
+    }
+    #details{
+        margin: 20px;
+        font-size: 18px;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #image{
+        height: 150px;
+        width: 150px;
+        display: flex;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+</style>
+<body>
+    <div id="card">
+        <nav id="navbar">
+            <img src="redbus.jpeg" height="40px" width="40px" style="vertical-align: middle; border-radius: 50%;">
+            <h1> Book Sheet</h1>
+        </nav>
+        <div id="forflex" style="display: flex; gap: 50px;">
+        <div id="details ">
+            <center>
+            <h1>Welcome to Bus Booking System</h1>
+           
+           <table>
+           
+            <form action="#">
+                <tr>
+                    <td><label for="">User Name</label></td>
+                    <td><input type="text" placeholder="Enter your name"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Password</label></td>
+                    <td><input type="password" placeholder="Enter your password"></td>
+                </tr>
+                <tr>
+                    <td><label>User Gender</label></td>
+                    <td><input type="radio" name="gender">Male
+                    <input type="radio" name="gender">Female</td>
+                </tr>
+                <tr>
+                
+                    <td><label for="">Select your city </label></td>
+                    <td><select>
+                        <option value="delhi">Delhi</option>
+                        <option value="noida">Noida</option>
+                        <option value="ghaziabad">Ghaziabad</option>
+                        <option value="meerut">Meerut</option>
+                        <option value="mumbai">Mumbai</option>  
+                    </select></td>
+                </tr>
+                <br><br>
+                <tr>
+                    <td><button ><a href="paymet.html">Book Sheet</a></button>
+</tr>
+            
+           </table>
+                
+        </div>
+        <div id="image">
+            <img src="bus.webp" alt="">
+        </div>
+        </div>
+    </div>
+</body>
+</html>

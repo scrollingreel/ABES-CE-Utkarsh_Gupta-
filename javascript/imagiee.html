@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #card{
+        height: 800px;
+        width: 800px;
+        background-color: whitesmoke;
+        margin: 0 auto;
+        margin-top: 200px;
+        border-radius: 20px;
+            }
+            #button{
+                margin-bottom: 50px;
+                margin: 0 auto;
+            }
+            img{
+                height: 400px;
+                width: 400px;
+            }
+            #displayimg{
+                margin: 0 auto;
+                align-items: center;
+                margin-left: 150px;
+                margin-top: 50px;
+            }
+    </style>
+</head>
+<body>
+    <div id="card">
+        <div id="displayimg">
+            <img src="https://cdn.pixabay.com/photo/2022/09/27/19/46/ai-generated-7483596_960_720.jpg" alt="image" id="img1">
+        </div>
+        <div id="buttonn" >
+            <button id="hideBtn">Hide</button>
+           
+        </div>
+
+    </div>
+    <script>
+       document.getElementById("hideBtn").addEventListener("click", function() {
+      document.getElementById("img1").style.display = "none";
+    });
+    </script>
+</body>
+</html>

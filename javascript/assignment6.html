@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+  <style>
+    body{
+        align-items: center;
+        background-color: rebeccapurple;
+    }
+    #card{
+        height: 400px;
+        width: 400px;
+        background-color: whitesmoke;
+        margin: 0 auto;
+        margin-top: 200px;
+        border-radius: 20px;
+        
+    }
+    img{
+        height: 50px;
+        width: 50px;
+        margin-top: 20px;
+    }
+    #nav{
+        display: flex;
+        gap: 40px;
+    }
+    .buttonn{
+        margin-bottom: 20px;
+        margin-top: 150px;
+        gap: 60px;
+        margin-left: 100px;
+    }
+    .valuee{
+        margin: 0 auto;
+        margin-left:180px ;
+        margin-top: 70px;
+    }
+    button{
+        height: 50px;
+        width: 100px;
+        font-size: 20px;
+    }
+    span{
+        font-size: 40px;
+    }
+
+  </style>
+</head>
+<body>
+   
+    <div id="card">
+      <div id="nav"><img src="https://tse4.mm.bing.net/th/id/OIP.1b5SRy-zBG5AbtuEJ03NYAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="log">
+      <h1 style="text-align: center">Counter App</h1>
+    </div>
+    
+<div class="valuee">
+      <span id="value">0</span>
+</div>
+
+  <div class="buttonn">
+<button id="minus">-</button>
+<button id="plus">+</button>
+  </div>
+  
+
+    </div>
+  
+
+  <script>
+    let count = 0;
+    const value = document.getElementById("value");
+    const plus = document.getElementById("plus");
+    const minus = document.getElementById("minus");
+
+    plus.addEventListener("click", () => {
+     if (count <= 10) {  // stop going below 0
+        count++;
+        value.textContent = count;
+      }
+     if(count==11){
+         document.getElementById("value").innerText = alert("value of counter cannot be greater tha 10");
+     }
+    });
+
+    minus.addEventListener("click", () => {
+      if (count > 0) {  // stop going below 0
+        count--;
+        value.textContent = count;
+      }
+    });
+  </script>
+</body>
+</html>

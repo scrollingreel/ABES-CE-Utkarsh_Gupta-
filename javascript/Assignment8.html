@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .cart-box {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .cart-box h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .student-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #e9e9e9;
+        }
+
+        .student-card h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .student-card p {
+            margin: 5px 0;
+        }
+
+        .no-students {
+            font-style: italic;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Cart</h1>
+
+    <script>
+        // JSON Data representing the students
+        const studentData = `[
+            {"Name": "Anand", "RollNo": 2300320150058, "class": "CE"},
+            {"Name": "Sumit", "RollNo": 23003201538, "class": "Cse"},
+            {"Name": "Utkarsh", "RollNo": 2300320150338, "class": "CE"},
+            {"Name": "Ravi", "RollNo": 2300320150488, "class": "Cse"},
+            {"Name": "Kiran", "RollNo": 2300320150677, "class": "EE"}
+        ]`;
+
+        // Parse the JSON data
+        const students = JSON.parse(studentData);
+
+        // Group students by their class
+        const groupedStudents = students.reduce((acc, student) => {
+            if (!acc[student.class]) {
+                acc[student.class] = [];
+            }
+            acc[student.class].push(student);
+            return acc;
+        }, {});
+
+        // Function to create a student card HTML
+        function createStudentCard(student) {
+            return `
+                <div class="student-card">
+                    <h3>${student.Name}</h3>
+                    <p>Roll No: ${student.RollNo}</p>
+                    <p>Class: ${student.class}</p>
+                </div>
+            `;
+        }
+
+        // Loop through each branch and display students in separate boxes
+        Object.keys(groupedStudents).forEach(branch => {
+            const branchStudents = groupedStudents[branch];
+            let branchHTML = `
+                <div class="cart-box">
+                    <h2>${branch} Students</h2>
+            `;
+            
+            if (branchStudents.length > 0) {
+                branchStudents.forEach(student => {
+                    branchHTML += createStudentCard(student);
+                });
+            } else {
+                branchHTML += `<p class="no-students">No students available in this branch.</p>`;
+            }
+
+            branchHTML += `</div>`;
+
+            // Append to the body
+            document.body.innerHTML += branchHTML;
+        });
+    </script>
+    
+</body>
+</html>

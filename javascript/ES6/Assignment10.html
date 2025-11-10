@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Maker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .form-box, .resume-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+    .form-box h2, .resume-box h2 {
+      margin-bottom: 15px;
+      text-align: center;
+    
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: teal;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: darkcyan;
+    }
+    .resume-box {
+      display: none;
+    }
+    .resume-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .resume-header img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #333;
+    }
+    .skills-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Input Form -->
+  <div class="form-box">
+    <h2>Resume Form</h2>
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <label>Class:</label>
+    <input type="text" id="class">
+
+    <label>Skills (comma separated):</label>
+    <input type="text" id="skills">
+
+    <label>Address:</label>
+    <textarea id="address"></textarea>
+
+    <label>Upload Image:</label>
+    <input type="file" id="image" accept="image/*">
+
+    <button onclick="generateResume()">Generate Resume</button>
+  </div>
+
+  <!-- Generated Resume -->
+  <div class="resume-box" id="resume">
+    <h2>My Resume</h2>
+    <div class="resume-header">
+      <img id="resImage" src="" alt="Profile">
+      <div>
+        <h3 id="resName"></h3>
+        <p id="resClass"></p>
+      </div>
+    </div>
+    <h4>Skills</h4>
+    <ul class="skills-list" id="resSkills"></ul>
+    <h4>Address</h4>
+    <p id="resAddress"></p>
+  </div>
+</div>
+
+<script>
+  function generateResume() {
+    // Get input values
+    document.getElementById("resName").innerText = document.getElementById("name").value;
+    document.getElementById("resClass").innerText = document.getElementById("class").value;
+
+    // Skills
+    const skillsInput = document.getElementById("skills").value.split(",");
+    const skillsList = document.getElementById("resSkills");
+    skillsList.innerHTML = "";
+    skillsInput.forEach(skill => {
+      if(skill.trim()) {
+        const li = document.createElement("li");
+        li.innerText = skill.trim();
+        skillsList.appendChild(li);
+      }
+    });
+
+    // Address
+    document.getElementById("resAddress").innerText = document.getElementById("address").value;
+
+    // Image
+    const file = document.getElementById("image").files[0];
+    if(file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("resImage").src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+   
+    document.getElementById("resume").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
