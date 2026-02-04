@@ -2,24 +2,39 @@ import React, { useEffect, useState } from 'react';
 import Weather from './components/Weather';
 
 function App() {
-  const [weather, setWeather] = useState(null);
+  const [cityWeather, setCityWeather] = useState([]);
+  const cities = ["Delhi", "Ghaziabad", "Kolkata", "Chennai", "London"];
 
   useEffect(() => {
-    fetch('https://api.openweathermap.org/data/2.5/forecast?q=Delhi&appid=b7c28aeda623fdf2ee2f66eef5600c5b')
-      .then(res => res.json())
-      .then(data => {
-        setWeather(data);
-      });
+    async function fetchData() {
+      const apiKey = "b7c28aeda623fdf2ee2f66eef5600c5b";
+      const results = [];
+
+      for (let city of cities) {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        );
+        const data = await res.json();
+        results.push(data);
+      }
+
+      setCityWeather(results);
+    }
+
+    fetchData();
   }, []);
 
-  if (!weather) return <h1>Loading...</h1>;
+  if (cityWeather.length === 0) return <h1>Loading...</h1>;
 
   return (
     <div>
-      <h1>City: {weather.city.name}</h1>
-
-      {weather.list.map((item, index) => (
-        <Weather key={index} data={item} location={weather.city.name} />
+      {cityWeather.map((item, index) => (
+        <Weather
+          key={index}
+          location={item.name}
+          temperature={(item.main.temp - 273.15).toFixed(1)}
+          condition={item.weather[0].description}
+        />
       ))}
     </div>
   );
