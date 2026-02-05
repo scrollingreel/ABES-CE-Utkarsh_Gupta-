@@ -38,8 +38,58 @@
 //     }
 // })
 
+// Async/Await version
+// const fsPromises = require('fs').promises;
+
+// async function appendToFile() {
+//     await fsPromises.appendFile("./CSE.txt", `and they are not good`);
+//     console.log("File updated successfully");
+// }
+
+// async function deleteFile() {
+//     await fsPromises.unlink("./CSE.txt");
+//     console.log("File deleted successfully");
+// }
+
+// appendToFile();
+// deleteFile();
+
+
+// Callback version
 const fs = require('fs');
 
-fs.appendFileSync("./CSE.txt",`and they are not good`);
+function appendFileCallback() {
+    fs.appendFile("./CSE.txt", `and they are not good`, (err) => {
+        if (err) {
+            console.log("Error appending:", err);
+        } else {
+            console.log("File appended successfully");
+        }
+    });
+}
+
+function copyFileCallback() {
+    fs.copyFile("./CSE.txt", "./CSE_copy.txt", (err) => {
+        if (err) {
+            console.log("Error copying:", err);
+        } else {
+            console.log("File copied successfully");
+        }
+    });
+}
+
+function deleteFileCallback() {
+    fs.unlink("./CSE.txt", (err) => {
+        if (err) {
+            console.log("Error deleting:", err);
+        } else {
+            console.log("File deleted successfully");
+        }
+    });
+}
+
+appendFileCallback();
+// copyFileCallback();
+// deleteFileCallback();
 
 
