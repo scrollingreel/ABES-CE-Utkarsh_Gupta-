@@ -40,6 +40,6 @@
 
 const fs = require('fs');
 
-fs.cpSync("CSE.txt","CEE-A.txt");
+fs.appendFileSync("./CSE.txt",`and they are not good`);
 
 
